@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import Home from './src/home';
 
-AppRegistry.registerComponent('desafioGaBuzzi', () => App);
+AppRegistry.registerComponent('desafioGaBuzzi', () => Home);
