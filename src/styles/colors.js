@@ -11,7 +11,7 @@ export default {
   dark: '#666',
   darker: '#333',
   black: '#000',
-  
+
   success: '#9dca83',
   danger: '#e37a7a',
 };

@@ -1,16 +1,15 @@
+/* Importando class StyleSheet para criação de estilos com javascript */
 import { StyleSheet as SS } from 'react-native';
 
-import colors from '../../styles/colors';
-
-export const { container, titleStyle } = SS.create({
+export default SS.create({
   container: {
     flex: 1,
-    backgroundColor: colors.primary,
+    backgroundColor: '#4682b4',
     justifyContent: 'center',
     alignItems: 'center',
   },
   titleStyle: {
-    color: colors.lighter,
+    color: '#eee',
     fontSize: 30,
     fontWeight: 'bold',
   },

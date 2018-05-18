@@ -1,13 +1,13 @@
 /* Importações padrões */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
 
 /* Importando objetos de estilização do arquivo styles.js */
-import { container, titleStyle } from './styles';
+import ss from './styles';
 
 /* construção do componente sem estado */
-export const Header = ({ title }) => (
-  <View style={container}>
-    <Text style={titleStyle}>{title}</Text>
-  </View>
+export const Header = ({ title, theme, onPressHeader}) => (
+  <TouchableOpacity style={[ss.container, theme]} onPress={onPressHeader}>
+    <Text style={ss.titleStyle}>{title}</Text>
+  </TouchableOpacity>
 );

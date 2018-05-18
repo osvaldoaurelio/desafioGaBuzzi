@@ -1,12 +1,11 @@
+/* Importando class StyleSheet para criação de estilos com javascript */
 import { StyleSheet as SS } from 'react-native';
 
-import colors from '../../styles/colors';
-
-export const { container, botoesContainer } = SS.create({
+export default SS.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: colors.primary,
+    backgroundColor: '#4682b4',
     justifyContent: 'center',
     alignItems: 'center',
   },

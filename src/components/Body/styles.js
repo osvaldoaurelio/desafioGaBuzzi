@@ -1,3 +1,4 @@
+/* Importando class StyleSheet para criação de estilos com javascript */
 import { StyleSheet as SS } from 'react-native';
 
 export default SS.create({

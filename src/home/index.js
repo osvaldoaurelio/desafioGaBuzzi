@@ -14,31 +14,48 @@ import axios from 'axios';
 
 /* Importando arquivo de configuração do Reactotron */
 import '../config/ReactotronConfig';
+
 /* Importação de componentes stateless */
 import { Header } from '../components/Header';
 import { Body } from '../components/Body';
 import { Footer } from '../components/Footer';
 
 /* Importando objetos de estilização */
-import { container, header, main, footer } from './styles';
+import ss from './styles';
 
 /* Declaração da classe do component Home */
 export default class Home extends Component {
-  /* Primeira estrutura - estados */
-  state = { itens: [] };
+  /* declaração e inicialização do estado do compontente */
+  state = {
+    user: 'andreaugusto2d',
+    itens: [
+      {
+        id: 0,
+        name: '',
+        full_name: '',
+        owner: { avatar_url: 'img.jpg' },
+        size: 0,
+        language: '',
+        forks: 0,
+        default_branch: '',
+      },
+    ],
+    theme: { backgroundColor: '#4682b4' },
+  };
 
-  /* Segunda estrutura - antes de renderizar-se */
+  /* método padrão ciclo de vida - antes de renderizar-se */
   componentDidMount() {
     this.buscarApi();
   }
 
+  /* método async/await buscar API - não recomendado dentro do componentDidMount */
   buscarApi = async () => {
     /* mockapi - site para testar API - ainda nao conseguir fazer funcionar */
     // const url = 'https://5adfd65a17a03000145b2539.mockapi.io/api/v1/users/';
     /* API Repositórios github - array de objetos */
-    const url = 'ahttps://api.github.com/users/osvaldoaurelio/repos';
+    const url = `https://api.github.com/users/${this.state.user}/repos`;
     /* API Usuário github - apenas um objeto */
-    // const url = 'https://api.github.com/users/osvaldoaurelio';
+    // const url = 'https://api.github.com/users/${this.state.user}';
     /* API ruby on rails - local - para testes - não consegui funcionar */
     // const url = 'http://localhost:3000/users';
     try {
@@ -47,25 +64,59 @@ export default class Home extends Component {
       this.setState({ itens });
     } catch (error) {
       Alert.alert(
-        'Conexão caiu!',
-        `${error}\nouh me ajuda aqui...`,
+        'Ocorreu um problema!',
+        `
+        ${error}
+        
+        ouh me ajuda aqui...`,
       );
     }
   };
 
-  /* Terceira estrutura - renderização do mesmo */
+  /* método para mudar background */
+  switchTheme = (botao) => {
+    const cor = botao === 'blue' ? '#4682b4' : '#303030';
+    this.setState({
+      theme: { backgroundColor: cor },
+    });
+  }
+  addUser = async () => {
+    const user = ([
+      'osvaldoaurelio',
+      'lucasedusi',
+      'andreaugusto2d',
+    ])[Math.random()*3 >> 0]; 
+    await this.setState({
+      user,
+    });
+    this.buscarApi();
+  }
+  /* método obrigatório para renderização do componente */
   render() {
     return (
-      <View style={container}>
-        <View style={header}>
-          <Header title="App desafio Gabriel Buzzi" />
+      <View style={ss.container}>
+
+        <View style={ss.header}>
+          <Header
+            title="App desafio Gabriel Buzzi"
+            theme={this.state.theme}
+            onPressHeader={this.addUser}
+          />
         </View>
-        <View style={main}>
-          <Body dados={this.state.itens} />
+
+        <View style={ss.main}>
+          <Body
+            dados={this.state.itens}
+          />
         </View>
-        <View style={footer}>
-          <Footer />
+
+        <View style={ss.footer}>
+          <Footer
+            theme={this.state.theme}
+            onPressFooter={botao => this.switchTheme(botao)}
+          />
         </View>
+
       </View>
     );
   }
