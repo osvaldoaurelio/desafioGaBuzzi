@@ -8,26 +8,45 @@
 /* Importação padrão do react para classes */
 import React, { Component } from 'react';
 /* Importando componentes do react-native */
-import { Text, View, Alert, TouchableOpacity } from 'react-native';
-/* Importando arquivo de configuração do Reactotron */
-import '../config/ReactotronConfig';
+import { View, Alert } from 'react-native';
 /* Importação padrão do axios para requesições */
 import axios from 'axios';
-/* Importação do componente stateless Head */
+
+/* Importando arquivo de configuração do Reactotron */
+import '../config/ReactotronConfig';
+/* Importação de componentes stateless */
 import { Header } from '../components/Header';
+import { Body } from '../components/Body';
+import { Footer } from '../components/Footer';
+
+/* Importando objetos de estilização */
+import { container, header, main, footer } from './styles';
 
 /* Declaração da classe do component Home */
 export default class Home extends Component {
   /* Primeira estrutura - estados */
   state = {
-    itens: [],
+    itens: [
+      { id: 1, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
+      { id: 2, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
+      { id: 3, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
+      { id: 4, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
+      { id: 5, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
+      { id: 6, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
+      { id: 7, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
+    ],
   };
+
   /* Segunda estrutura - antes de renderizar-se */
-  async componentDidMount() {
+  componentDidMount() {
+    this.buscarApi();
+  }
+
+  buscarApi = async () => {
     /* mockapi - site para testar API - ainda nao conseguir fazer funcionar */
-    const url = 'https://5adfd65a17a03000145b2539.mockapi.io/api/v1/users/';
+    // const url = 'https://5adfd65a17a03000145b2539.mockapi.io/api/v1/users/';
     /* API Repositórios github - array de objetos */
-    // const url = 'https://api.github.com/users/osvaldoaurelio/repos';
+    const url = 'ahttps://api.github.com/users/osvaldoaurelio/repos';
     /* API Usuário github - apenas um objeto */
     // const url = 'https://api.github.com/users/osvaldoaurelio';
     /* API ruby on rails - local - para testes - não consegui funcionar */
@@ -37,40 +56,27 @@ export default class Home extends Component {
       const itens = response.data;
       this.setState({ itens });
     } catch (error) {
-      console.tron.log('hmm');
-      // Alert.alert('Conexão caiu!', `${error}\nouh me ajuda aqui...`);
+      Alert.alert(
+        'Conexão caiu!',
+        `${error}\nouh me ajuda aqui...`,
+      );
     }
-  }
+  };
 
   /* Terceira estrutura - renderização do mesmo */
   render() {
     return (
       <View style={container}>
-        
+        <View style={header}>
           <Header title="App desafio Gabriel Buzzi" />
-        
+        </View>
         <View style={main}>
-          <Text style={textMain}>qualquer coisa</Text>
+          <Body dados={this.state.itens} />
         </View>
         <View style={footer}>
-          <TouchableOpacity>
-            <Text style={btn}>botão 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={btn}>botão 2</Text>
-          </TouchableOpacity>
+          <Footer />
         </View>
       </View>
     );
   }
 }
-
-/* Importando objetos de estilização do arquivo styles.js */
-import { 
-  container, 
-  header, 
-  main,
-  textMain,
-  footer,
-  btn,
-} from './styles';

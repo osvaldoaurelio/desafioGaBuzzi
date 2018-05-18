@@ -1,49 +1,24 @@
-import { 
-  StyleSheet as SS 
-} from 'react-native';
+import { StyleSheet as SS } from 'react-native';
 
-export const { 
-  container, 
-  header, 
-  main,
-  textMain,
-  footer,
-  btn,
+export const {
+  container, header, main, footer,
 } = SS.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#666',
   },
   header: {
-    flex: 1.75,
+    flex: 3,
   },
   main: {
-    flex: 11,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ddd',
-  },
-  textMain: {
-    color: '#fff',    
-    fontSize: 20,
+    paddingTop: 5,
+    flex: 20,
+    justifyContent: 'space-around',
   },
   footer: {
-    flex: 1,
+    flex: 2,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#4682b4'
-  },
-  btn: {
-    color: '#eee',
-    paddingHorizontal: 60,
-    paddingVertical: 4,
-    fontSize: 18,
-    fontWeight: 'bold',
-    borderWidth: 1,
-    borderRadius: 16,
-    marginTop: 8,
-    elevation: 2,
-    borderColor: '#ccc',
-    backgroundColor: '#4682b4'
+    backgroundColor: '#4682b4',
   },
 });

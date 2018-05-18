@@ -2,16 +2,17 @@ import { StyleSheet as SS } from 'react-native';
 
 import colors from '../../styles/colors';
 
-export const { container, titleStyle } = SS.create({
+export const { container, botoesContainer } = SS.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  titleStyle: {
-    color: colors.lighter,
-    fontSize: 30,
-    fontWeight: 'bold',
+  botoesContainer: {
+    flex: 1,
+    marginHorizontal: 6,
+    paddingHorizontal: 2,
   },
 });
