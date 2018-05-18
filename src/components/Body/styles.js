@@ -1,17 +1,17 @@
 import { StyleSheet as SS } from 'react-native';
 
-export const { container, imagemV, imagem, textMain } = SS.create({
+export default SS.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-around',
     backgroundColor: '#f8f8f8',
     marginHorizontal: 10,
     marginBottom: 10,
     padding: 20,
-    borderRadius: 6,    
+    borderRadius: 6,
   },
-  imagemV: {   
+  imagemV: {
     alignItems: 'center',
     justifyContent: 'center',
     width: 88,
@@ -25,11 +25,44 @@ export const { container, imagemV, imagem, textMain } = SS.create({
   imagem: {
     width: 80,
     height: 80,
-    borderRadius: 40,   
+    borderRadius: 40,
+  },
+  textContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   textMain: {
-    fontSize: 30,
-    color: '#333',
+    fontSize: 24,
+    color: '#666',
     fontWeight: 'bold',
   },
+  textSecond: {
+    fontSize: 16,
+    color: '#111',
+  },
+  borderStyle: {
+    margin: 2,
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    height: 1,
+  },
+  inRow: {
+    flexDirection: 'row',
+    flex: 1,
+    alignItems: 'center',
+  },
+  inRowS: {
+    marginTop: 12,
+    justifyContent: 'space-between',
+    backgroundColor: '#444',
+  },
+  listFooter: {
+    margin: 3,
+  },
+  listText: {
+    color: '#eee',
+    alignSelf: 'center',
+  }
 });

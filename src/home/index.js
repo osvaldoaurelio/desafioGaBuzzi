@@ -25,17 +25,7 @@ import { container, header, main, footer } from './styles';
 /* Declaração da classe do component Home */
 export default class Home extends Component {
   /* Primeira estrutura - estados */
-  state = {
-    itens: [
-      { id: 1, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
-      { id: 2, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
-      { id: 3, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
-      { id: 4, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
-      { id: 5, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
-      { id: 6, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
-      { id: 7, name: 'osvaldo', full_name: 'osvaldo aurelio', avatar_url: './img.jpg' },
-    ],
-  };
+  state = { itens: [] };
 
   /* Segunda estrutura - antes de renderizar-se */
   componentDidMount() {
