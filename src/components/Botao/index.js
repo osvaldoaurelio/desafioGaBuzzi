@@ -6,7 +6,7 @@ import { TouchableOpacity, Text } from 'react-native';
 import ss from './styles';
 
 /* construção do componente sem estado */
-export const Botao = ({title, onPressBotao}) => (
+export default ({ onPressBotao, title }) => (
   <TouchableOpacity style={ss.container} onPress={onPressBotao}>
     <Text style={ss.botao}>{title}</Text>
   </TouchableOpacity>

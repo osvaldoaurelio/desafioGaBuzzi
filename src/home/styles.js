@@ -10,9 +10,9 @@ export default SS.create({
     flex: 3,
   },
   main: {
-    paddingTop: 5,
     flex: 20,
     justifyContent: 'space-around',
+    paddingTop: 5,
   },
   footer: {
     flex: 2,

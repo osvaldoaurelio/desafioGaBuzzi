@@ -2,7 +2,10 @@
  * @name: App desafio Gabriel Buzzi
  * @since: 2018-05-14
  * @author: Osvaldo Aurélio Ribeiro Silva
- * @version: 0.1.0
+ * @version: 0.0.1 2018-05-14
+ * @version: 0.0.3 2018-05-15
+ * @version: 0.0.4 2018-05-17
+ * @version: 0.0.5 2018-05-18
  */
 
 /* Importação padrão do react para classes */
@@ -16,9 +19,9 @@ import axios from 'axios';
 import '../config/ReactotronConfig';
 
 /* Importação de componentes stateless */
-import { Header } from '../components/Header';
-import { Body } from '../components/Body';
-import { Footer } from '../components/Footer';
+import Header from '../components/Header';
+import Body from '../components/Body';
+import Footer from '../components/Footer';
 
 /* Importando objetos de estilização */
 import ss from './styles';
@@ -27,13 +30,15 @@ import ss from './styles';
 export default class Home extends Component {
   /* declaração e inicialização do estado do compontente */
   state = {
-    user: 'andreaugusto2d',
+    user: 'osvaldoaurelio',
     itens: [
       {
         id: 0,
         name: '',
         full_name: '',
-        owner: { avatar_url: 'img.jpg' },
+        owner: {
+          avatar_url: '../img.jpg',
+        },
         size: 0,
         language: '',
         forks: 0,
@@ -73,29 +78,34 @@ export default class Home extends Component {
     }
   };
 
-  /* método para mudar background */
-  switchTheme = (botao) => {
-    const cor = botao === 'blue' ? '#4682b4' : '#303030';
+  /* método para mudar theme(background) */
+  switchTheme = (botaoTitle) => {
+    const color = botaoTitle === 'Blue' ? '#4682b4' : '#303030';
     this.setState({
-      theme: { backgroundColor: cor },
+      theme: { backgroundColor: color },
     });
-  }
+  };
   addUser = async () => {
-    const user = ([
+    const users = [
       'osvaldoaurelio',
       'lucasedusi',
       'andreaugusto2d',
-    ])[Math.random()*3 >> 0]; 
-    await this.setState({
-      user,
-    });
-    this.buscarApi();
-  }
+      'crypto-br',
+      'eltonn',
+      'flaviolpgjr',
+      'pedrorenan',
+      'lucasGabrielDeAA',
+      'gabrielbuzziv',
+    ];
+    const user = users[Math.floor(Math.random() * users.length)];
+    await this.setState({ user });
+    this.buscarApi(); // buscar API para user sorteado
+  };
+
   /* método obrigatório para renderização do componente */
   render() {
     return (
       <View style={ss.container}>
-
         <View style={ss.header}>
           <Header
             title="App desafio Gabriel Buzzi"
@@ -105,18 +115,15 @@ export default class Home extends Component {
         </View>
 
         <View style={ss.main}>
-          <Body
-            dados={this.state.itens}
-          />
+          <Body dados={this.state.itens} />
         </View>
 
         <View style={ss.footer}>
           <Footer
             theme={this.state.theme}
-            onPressFooter={botao => this.switchTheme(botao)}
+            onPressFooter={botaoTitle => this.switchTheme(botaoTitle)}
           />
         </View>
-
       </View>
     );
   }

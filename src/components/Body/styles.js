@@ -57,7 +57,7 @@ export default SS.create({
   inRowS: {
     marginTop: 12,
     justifyContent: 'space-between',
-    backgroundColor: '#444',
+    backgroundColor: '#666',
   },
   listFooter: {
     margin: 3,
@@ -65,5 +65,5 @@ export default SS.create({
   listText: {
     color: '#eee',
     alignSelf: 'center',
-  }
+  },
 });

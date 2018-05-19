@@ -16,7 +16,6 @@ export default SS.create({
     borderWidth: 1,
     borderRadius: 16,
     borderColor: '#ccc',
-    color: '#eee',
-    backgroundColor: 'rgb(0,145,139)',
+    color: '#efefef',
   },
 });

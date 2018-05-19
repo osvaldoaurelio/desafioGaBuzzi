@@ -35,7 +35,7 @@ const meuRenderItem = ({ item }) => (
 );
 
 /* construção do componente sem estado */
-export const Body = ({ dados }) => (
+export default ({ dados }) => (
   <FlatList
     data={dados}
     renderItem={({ item }) => meuRenderItem({ item })}
